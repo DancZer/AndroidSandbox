@@ -16,6 +16,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:orientation="vertical"
+        android:padding="4pt"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,20 +27,41 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="onStartClick"
-            android:text="Start Service" />
+            android:text="@string/start_service" />
 
         <Button
             android:id="@+id/buttonStop"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="onStopClick"
-            android:text="Stop Service" />
+            android:text="@string/stop_service" />
 
         <TextView
             android:id="@+id/textViewStarted"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="No result." />
+            android:paddingLeft="4pt"
+            android:paddingRight="4pt"
+            android:text="@string/no_result" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20pt" />
+
+        <Button
+            android:id="@+id/buttonIntentStart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onIntentStartClick"
+            android:text="@string/start_intent_service" />
+
+        <TextView
+            android:id="@+id/textViewIntent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="4pt"
+            android:paddingRight="4pt"
+            android:text="@string/no_result" />
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

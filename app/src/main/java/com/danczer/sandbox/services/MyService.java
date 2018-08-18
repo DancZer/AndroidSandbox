@@ -3,17 +3,17 @@ package com.danczer.sandbox.services;
 import android.app.Service;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.os.Bundle;
 import android.os.IBinder;
 import android.os.ResultReceiver;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
-public class AsyncTaskService extends Service {
+public class MyService extends Service
+{
 
-    private static  final String TAG = AsyncTaskService.class.getSimpleName();
+    private static  final String TAG = MyService.class.getSimpleName();
 
-    private ServiceAsyncTask task;
+    private MyAsyncTask task;
 
     @Override
     public void onCreate() {
@@ -29,23 +29,15 @@ public class AsyncTaskService extends Service {
 
         int sleepTime = intent.getIntExtra("sleepTime", 0);
 
-        ResultReceiver receiver = intent.getParcelableExtra("receiver");
+        MyResultBuilder receiver = new MyResultBuilder((ResultReceiver) intent.getParcelableExtra("receiver"));
 
-        SendResultBundle(receiver, "Service started!");
+        receiver.sendText("Service started!");
 
-        task = new ServiceAsyncTask(receiver);
+        task = new MyAsyncTask(receiver);
 
         task.execute(sleepTime);
 
         return super.onStartCommand(intent, flags, startId);
-    }
-
-    private static void SendResultBundle(ResultReceiver receiver, String text){
-        Bundle bundle = new Bundle();
-
-        bundle.putString("text", text);
-
-        receiver.send(10, bundle);
     }
 
     @Nullable
@@ -68,13 +60,13 @@ public class AsyncTaskService extends Service {
         }
     }
 
-    private static class ServiceAsyncTask extends AsyncTask<Integer, String, Void>{
+    private static class MyAsyncTask extends AsyncTask<Integer, String, Void>{
 
-        private final String TAG = ServiceAsyncTask.class.getSimpleName();
+        private final String TAG = MyAsyncTask.class.getSimpleName();
 
-        private ResultReceiver resultReceiver;
+        private MyResultBuilder resultReceiver;
 
-        private ServiceAsyncTask(ResultReceiver resultReceiver){
+        private MyAsyncTask(MyResultBuilder resultReceiver){
 
             this.resultReceiver = resultReceiver;
         }
@@ -124,7 +116,7 @@ public class AsyncTaskService extends Service {
             Log.i(TAG, "onProgressUpdate, Thread name "+Thread.currentThread().getName());
 
             for (String text:values) {
-                SendResultBundle(resultReceiver, text);
+                resultReceiver.sendText(text);
             }
         }
 

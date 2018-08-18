@@ -18,7 +18,8 @@
         </activity>
         <activity android:name=".services.ServiceActivity" />
 
-        <service android:name=".services.AsyncTaskService" />
+        <service android:name=".services.MyService" />
+        <service android:name=".services.MyIntentService" />
     </application>
 
 </manifest>
