@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.danczer.sandbox.services.ServiceActivity;
-import com.danczer.sandbox.services.StartedService;
 
 public class MainActivity extends AppCompatActivity {
 

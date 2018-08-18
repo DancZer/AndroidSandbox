@@ -18,7 +18,7 @@
         </activity>
         <activity android:name=".services.ServiceActivity" />
 
-        <service android:name=".services.StartedService" />
+        <service android:name=".services.AsyncTaskService" />
     </application>
 
 </manifest>

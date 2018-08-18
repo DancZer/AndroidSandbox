@@ -22,17 +22,24 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <Button
-            android:id="@+id/button_start"
+            android:id="@+id/buttonStart"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="onStartClick"
             android:text="Start Service" />
 
         <Button
-            android:id="@+id/button_stop"
+            android:id="@+id/buttonStop"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="onStopClick"
             android:text="Stop Service" />
+
+        <TextView
+            android:id="@+id/textViewStarted"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="No result." />
+
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
